@@ -20,10 +20,12 @@ public class BaseTest {
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
         String url = "https://qa.koel.app"; // Overriding URL with specified value
         driver.get(url); // Navigating WebDriver to the specified URL
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
+
     @AfterTest
     public void closeBrowser() {
         driver.quit();
